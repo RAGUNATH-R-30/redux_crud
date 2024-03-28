@@ -24,7 +24,7 @@ function Card({ content }) {
     setshowmodal(bool)
   }
   return (
-    <div className="col-lg-4">
+    <div className="col-lg-4 col-md-6">
       <div className="card mb-2" style={{ fontFamily: "sans-serif" ,fontSize:14}}>
         <div className="card-body">
           <div className="row">
@@ -76,12 +76,12 @@ function Card({ content }) {
             </div>
           </div>
           <div className="row">
-            <div className="col-lg-6 text-center">
+            <div className="col-6 text-center">
               <button type="submit" className="btn btn-primary btn-sm" style={{width:100,}}onClick={()=>setshowmodal(true)}>
                 Edit
               </button>
             </div>
-            <div className="col-lg-6 text-center">
+            <div className="col-6 text-center">
               <button type="submit" className="btn btn-primary btn-sm" style={{width:100,}}onClick={()=>{
                 deleteuserapi(content.id);
                 dispatch(deleteuser(content))

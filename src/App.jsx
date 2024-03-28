@@ -36,7 +36,7 @@ useEffect(()=>{
       <div className="container-fluid">
         
         <div className="row mt-3">
-          <div className="col-lg-3">
+          <div className="col-lg-3 position">
             <Form></Form>
 
           </div>
