@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { edituser } from "./reducers/crudslice";
+import { toast } from "react-toastify";
 
 function Mymodal({content,modalclose}) {
     const [id,setid]=useState(content.id)
@@ -19,15 +20,13 @@ function Mymodal({content,modalclose}) {
     let updateuser=async(editeddata)=>{
         try {
             let updateduser = await axios.put(`https://6605376c2ca9478ea17fb6d1.mockapi.io/users/${editeddata.id}`,editeddata)    
+            
         } catch (error) {
             console.log(error)
         }
         
     }
-    
-    let idchange = ()=>{
-        setid(id+1)
-    }
+ 
   
     let namechange=(name)=>{
       setname(name.target.value)
@@ -70,7 +69,7 @@ function Mymodal({content,modalclose}) {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Modal title
+                Edit Changes
               </h1>
               <button
                 type="button"
@@ -227,7 +226,7 @@ function Mymodal({content,modalclose}) {
               }));
               modalclose(false)
               }}>
-                Save changes
+                Edit
               </button>
             </div>
           </div>

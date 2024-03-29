@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setuser } from "./reducers/crudslice";
 import Mymodal from "./Mymodal";
+import Navbar from "./Navbar";
+import "./App.css"
 
 
 
@@ -33,25 +35,26 @@ useEffect(()=>{
   return (
     <>
     {/* <Mymodal></Mymodal> */}
-      <div className="container-fluid">
+    <Navbar></Navbar>
+      <div className="container-fluid" style={{backgroundColor: "#FOFOFO"}}>
         
-        <div className="row mt-3">
-          <div className="col-lg-3 position">
+        <div className="row">
+          {/* <div className="col-lg-3 position">
             <Form></Form>
 
-          </div>
+          </div> */}
           
-
-          <div className="col-lg-9">
-
-            <div className="container ">
+{/* 
+          <div className="col-lg-9"> */}
+            
+            <div className="container mt-4 ">
               <div className="row">
               {data.userlist.map((item,index)=>{
                 return<Card content={item}key={index}/>
               })}
               </div>
 
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </div>
