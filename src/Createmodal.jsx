@@ -8,15 +8,15 @@ function Createmodal({modalclose}) {
     <div
     className={showmodal?"modal fade show":"modal fade"}
       id="exampleModal"
-      tabindex="-1"
+      tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
       style={{display:showmodal?"block":"none"}}
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h1 className="modal-title fs-5" id="exampleModalLabel">
               Create User
             </h1>
             <button
@@ -29,7 +29,7 @@ function Createmodal({modalclose}) {
                 }}
               ></button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             <Form modalclosing={modalclose}/>
           </div>
         </div>
