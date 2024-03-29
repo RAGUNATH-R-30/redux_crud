@@ -205,7 +205,7 @@ function Mymodal({content,modalclose}) {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary" onClick={()=>{
+              <button type="button" className="btn btn-primary" style={{backgroundColor:"#20236D",border:"none"}}onClick={()=>{
                 updateuser({
                 id:id,
                 name: name,
