@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import Form from "./Form";
 
-function Createmodal({modalclose}) {
-    const[showmodal,setshowmodal]=useState(true)
-   
+function Createmodal({ modalclose }) {
+  const [showmodal, setshowmodal] = useState(true);
+
   return (
     <div
-    className={showmodal?"modal fade show":"modal fade"}
+      className={showmodal ? "modal fade show" : "modal fade"}
       id="exampleModal"
       tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
-      style={{display:showmodal?"block":"none"}}
+      style={{ display: showmodal ? "block" : "none" }}
     >
       <div className="modal-dialog">
         <div className="modal-content">
@@ -20,17 +20,17 @@ function Createmodal({modalclose}) {
               Create User
             </h1>
             <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                onClick={()=>{
-                    modalclose(false)
-                }}
-              ></button>
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              onClick={() => {
+                modalclose(false);
+              }}
+            ></button>
           </div>
           <div className="modal-body">
-            <Form modalclosing={modalclose}/>
+            <Form modalclosing={modalclose} />
           </div>
         </div>
       </div>

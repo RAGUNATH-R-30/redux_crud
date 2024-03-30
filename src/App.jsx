@@ -7,54 +7,40 @@ import axios from "axios";
 import { setuser } from "./reducers/crudslice";
 import Mymodal from "./Mymodal";
 import Navbar from "./Navbar";
-import "./App.css"
-
-
+import "./App.css";
 
 function App() {
-const data = useSelector((state)=>state.app)
-const dispatch = useDispatch();
+  const data = useSelector((state) => state.app);
+  const dispatch = useDispatch();
 
-let getData =async()=>{
-  try {
-    const userlist = await axios.get("https://6605376c2ca9478ea17fb6d1.mockapi.io/users")
-    dispatch(setuser(userlist.data))
-  } catch (error) {
-    console.log(error)
-  }
-}
+  let getData = async () => {
+    try {
+      const userlist = await axios.get(
+        "https://6605376c2ca9478ea17fb6d1.mockapi.io/users"
+      );
+      dispatch(setuser(userlist.data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-useEffect(()=>{
-  if(data.userlist.length==0){
-    getData()
-    
-  }
-  
-},[])
+  useEffect(() => {
+    if (data.userlist.length == 0) {
+      getData();
+    }
+  }, []);
 
   return (
     <>
-    {/* <Mymodal></Mymodal> */}
-    <Navbar></Navbar>
-      <div className="container-fluid" style={{backgroundColor: "#FOFOFO"}}>
-        
+      <Navbar></Navbar>
+      <div className="container-fluid" style={{ backgroundColor: "#FOFOFO" }}>
         <div className="row">
-          {/* <div className="col-lg-3 position">
-            <Form></Form>
-
-          </div> */}
-          
-{/* 
-          <div className="col-lg-9"> */}
-            
-            <div className="container mt-4 ">
-              <div className="row">
-              {data.userlist.map((item,index)=>{
-                return<Card content={item}key={index}/>
+          <div className="container mt-4 ">
+            <div className="row">
+              {data.userlist.map((item, index) => {
+                return <Card content={item} key={index} />;
               })}
-              </div>
-
-            {/* </div> */}
+            </div>
           </div>
         </div>
       </div>

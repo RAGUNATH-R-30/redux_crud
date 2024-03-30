@@ -7,7 +7,7 @@ import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-function Form({modalclosing}) {
+function Form({ modalclosing }) {
   const [id, setid] = useState(0);
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
@@ -19,42 +19,48 @@ function Form({modalclosing}) {
   const dispatch = useDispatch();
 
   let addnewuser = async (user) => {
-    try {
-      console.log(user);
-      const newuser = await toast.promise(axios.post(
-        "https://6605376c2ca9478ea17fb6d1.mockapi.io/users",user),
-        {
-          pending:"Creatinguser",
-          success:"UserCreated"
-        }
-        )
-      // const newuser = await axios.post(
-      //   "https://6605376c2ca9478ea17fb6d1.mockapi.io/users",
-      //   user
-      // );
-      setid(newuser.data.id);
-      dispatch(
-        adduser({
-          id: newuser.data.id,
-          name: name,
-          email: email,
-          phonenumber: phonenumber,
-          address: address,
-          website: websiteurl,
-          company: companyname,
-        })
-      );
+    if (
+      user.name.length == 0 ||
+      user.email.length == 0 ||
+      user.phonenumber.length == 0 ||
+      user.address.length == 0 ||
+      user.website.length == 0 ||
+      user.company.length == 0
+    ) {
+      alert("No field is to be empty");
+    } else {
+      try {
+        console.log(user);
+        const newuser = await toast.promise(
+          axios.post("https://6605376c2ca9478ea17fb6d1.mockapi.io/users", user),
+          {
+            pending: "Creatinguser",
+            success: "UserCreated",
+          }
+        );
+        setid(newuser.data.id);
+        dispatch(
+          adduser({
+            id: newuser.data.id,
+            name: name,
+            email: email,
+            phonenumber: phonenumber,
+            address: address,
+            website: websiteurl,
+            company: companyname,
+          })
+        );
 
-      setname("");
-      setemail("");
-      setphonenumber("");
-      setaddress("");
-      setcompanyname("");
-      setwebsiteurl("");
-      modalclosing(false);
-
-    } catch (error) {
-      console.log(error);
+        setname("");
+        setemail("");
+        setphonenumber("");
+        setaddress("");
+        setcompanyname("");
+        setwebsiteurl("");
+        modalclosing(false);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -67,7 +73,6 @@ function Form({modalclosing}) {
       console.log(error);
     }
   };
-
 
   let namechange = (name) => {
     setname(name.target.value);
@@ -93,16 +98,10 @@ function Form({modalclosing}) {
     setcompanyname(companyname.target.value);
   };
 
-  let logs = () => {
-    console.log(name, email, address, phonenumber, websiteurl, companyname);
-    setname("");
-  };
-
   return (
     <>
       <ToastContainer />
       <div style={{ fontFamily: "sans-serif", fontSize: 14 }}>
-        
         <div className="mb-2">
           <label htmlFor="exampleInputPassword1" className="form-label">
             Name
@@ -181,29 +180,26 @@ function Form({modalclosing}) {
             value={companyname}
           />
         </div>
-        
+
         <div className="row text-center">
           <div className="col">
-
-        <button
-          type="submit"
-          className="btn btn-primary " 
-          style={{backgroundColor:"#20236D",border:"none"}}
-          onClick={() => {
-            // idchange();
-            addnewuser({
-              //id:id,
-              name: name,
-              email: email,
-              phonenumber: phonenumber,
-              address: address,
-              website: websiteurl,
-              company: companyname,
-            });
-          }}
-        >
-          Submit
-        </button>
+            <button
+              type="submit"
+              className="btn btn-primary "
+              style={{ backgroundColor: "#20236D", border: "none" }}
+              onClick={() => {
+                addnewuser({
+                  name: name,
+                  email: email,
+                  phonenumber: phonenumber,
+                  address: address,
+                  website: websiteurl,
+                  company: companyname,
+                });
+              }}
+            >
+              Submit
+            </button>
           </div>
         </div>
       </div>

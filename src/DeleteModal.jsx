@@ -3,17 +3,18 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteuser } from "./reducers/crudslice";
 
-function DeleteModal({content,deletemodalclose}) {
+function DeleteModal({ content, deletemodalclose }) {
   const dispatch = useDispatch();
-    
-  let deleteuserapi =async(id)=>{
+
+  let deleteuserapi = async (id) => {
     try {
-      const deleteuserrequest = await axios.delete(`https://6605376c2ca9478ea17fb6d1.mockapi.io/users/${id}`)
+      const deleteuserrequest = await axios.delete(
+        `https://6605376c2ca9478ea17fb6d1.mockapi.io/users/${id}`
+      );
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-   
-  }
+  };
   return (
     <div
       className="modal fade show"
@@ -21,7 +22,7 @@ function DeleteModal({content,deletemodalclose}) {
       tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
-      style={{display:'block'}}
+      style={{ display: "block" }}
     >
       <div className="modal-dialog">
         <div className="modal-content">
@@ -34,24 +35,33 @@ function DeleteModal({content,deletemodalclose}) {
               className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-              onClick={()=>{deletemodalclose(false)}}
+              onClick={() => {
+                deletemodalclose(false);
+              }}
             ></button>
           </div>
           <div className="modal-body">Are you sure.You want to delete?</div>
           <div className="modal-footer">
             <button
               type="button"
-              className="btn btn-primary btn-sm" style={{backgroundColor:"#66C6BA",border:"none"}}
+              className="btn btn-primary btn-sm"
+              style={{ backgroundColor: "#66C6BA", border: "none" }}
               data-bs-dismiss="modal"
-              onClick={()=>{deletemodalclose(false)}}
+              onClick={() => {
+                deletemodalclose(false);
+              }}
             >
               No
             </button>
-            <button type="button" className="btn btn-outline-danger btn-sm"onClick={()=>{
-              deleteuserapi(content.id);
-              dispatch(deleteuser(content));
-              deletemodalclose(false)
-            }}>
+            <button
+              type="button"
+              className="btn btn-outline-danger btn-sm"
+              onClick={() => {
+                deleteuserapi(content.id);
+                dispatch(deleteuser(content));
+                deletemodalclose(false);
+              }}
+            >
               yes
             </button>
           </div>

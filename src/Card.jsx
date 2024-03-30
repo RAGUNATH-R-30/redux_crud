@@ -7,32 +7,38 @@ import Mymodal from "./Mymodal";
 import { toast } from "react-toastify";
 import DeleteModal from "./DeleteModal";
 function Card({ content }) {
-
   const dispatch = useDispatch();
-  const [showmodal,setshowmodal]=useState(false)
-  const [deletemodal,setdeletemodal]=useState(false)
+  const [showmodal, setshowmodal] = useState(false);
+  const [deletemodal, setdeletemodal] = useState(false);
 
-  console.log(content)
-  
-  let deleteuserapi =async(id)=>{
+
+  let deleteuserapi = async (id) => {
     try {
-      const deleteuserrequest = await axios.delete(`https://6605376c2ca9478ea17fb6d1.mockapi.io/users/${id}`)
+      const deleteuserrequest = await axios.delete(
+        `https://6605376c2ca9478ea17fb6d1.mockapi.io/users/${id}`
+      );
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-   
-  }
+  };
 
-  let modalclose=(bool)=>{
-    setshowmodal(bool)
-  }
+  let modalclose = (bool) => {
+    setshowmodal(bool);
+  };
 
-  let deletemodalclose=(bool)=>{
-    setdeletemodal(bool)
-  }
+  let deletemodalclose = (bool) => {
+    setdeletemodal(bool);
+  };
   return (
     <div className="col-lg-3 col-md-4 col-sm-6">
-      <div className="card mb-2" style={{ fontFamily: "sans-serif" ,fontSize:14,backgroundColor:"white"}}>
+      <div
+        className="card mb-2"
+        style={{
+          fontFamily: "sans-serif",
+          fontSize: 14,
+          backgroundColor: "white",
+        }}
+      >
         <div className="card-body">
           <div className="row">
             <div className="col-6">
@@ -41,8 +47,6 @@ function Card({ content }) {
             <div className="col-6">
               <p>{content.name}</p>
             </div>
-
-
           </div>
           <div className="row">
             <div className="col-6">
@@ -86,27 +90,40 @@ function Card({ content }) {
           </div>
           <div className="row">
             <div className="col-6 text-center">
-              <button type="submit" className="btn btn-primary btn-sm" style={{width:100,backgroundColor:"#66C6BA",border:"none"}}onClick={()=>setshowmodal(true)}>
+              <button
+                type="submit"
+                className="btn btn-primary btn-sm"
+                style={{
+                  width: 100,
+                  backgroundColor: "#66C6BA",
+                  border: "none",
+                }}
+                onClick={() => setshowmodal(true)}
+              >
                 Edit
               </button>
             </div>
             <div className="col-6 text-center">
-              <button type="submit" className="btn btn-outline-danger btn-sm" style={{width:100,}}onClick={()=>{
-                setdeletemodal(true)
-                // deleteuserapi(content.id);
-                // dispatch(deleteuser(content))
-              }}>
+              <button
+                type="submit"
+                className="btn btn-outline-danger btn-sm"
+                style={{ width: 100 }}
+                onClick={() => {
+                  setdeletemodal(true);
+                }}
+              >
                 Delete
               </button>
             </div>
           </div>
         </div>
       </div>
-      
-      {showmodal&&<Mymodal content={content} modalclose={modalclose}/>}
-      {deletemodal&&<DeleteModal content={content} deletemodalclose={deletemodalclose}/>}
+
+      {showmodal && <Mymodal content={content} modalclose={modalclose} />}
+      {deletemodal && (
+        <DeleteModal content={content} deletemodalclose={deletemodalclose} />
+      )}
     </div>
-    
   );
 }
 
