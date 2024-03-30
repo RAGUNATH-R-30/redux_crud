@@ -7,7 +7,10 @@ import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+//Form Component
 function Form({ modalclosing }) {
+  //states
   const [id, setid] = useState(0);
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
@@ -18,6 +21,7 @@ function Form({ modalclosing }) {
 
   const dispatch = useDispatch();
 
+  //this function adds the new user
   let addnewuser = async (user) => {
     if (
       user.name.length == 0 ||
@@ -74,6 +78,7 @@ function Form({ modalclosing }) {
     }
   };
 
+  //below functions are used for formfield changes
   let namechange = (name) => {
     setname(name.target.value);
   };

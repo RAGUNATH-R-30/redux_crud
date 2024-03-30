@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Form from "./Form";
 
+//This is the create modal
 function Createmodal({ modalclose }) {
+  //state
   const [showmodal, setshowmodal] = useState(true);
 
   return (

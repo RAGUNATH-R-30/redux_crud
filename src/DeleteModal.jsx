@@ -3,9 +3,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteuser } from "./reducers/crudslice";
 
+//Delete component
 function DeleteModal({ content, deletemodalclose }) {
+
+  //States
   const dispatch = useDispatch();
 
+//The below function is used to delete user.
   let deleteuserapi = async (id) => {
     try {
       const deleteuserrequest = await axios.delete(

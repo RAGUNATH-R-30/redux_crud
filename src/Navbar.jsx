@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Createmodal from "./Createmodal";
 
+//This is the navbar
 function Navbar() {
   const [showmodal, setshowmodal] = useState(false);
+
+  //this function is used for the modal state.
   let modalclose = (bool) => {
     setshowmodal(bool);
   };

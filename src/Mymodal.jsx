@@ -5,6 +5,7 @@ import { edituser } from "./reducers/crudslice";
 import { toast } from "react-toastify";
 
 function Mymodal({ content, modalclose }) {
+  //states
   const [id, setid] = useState(content.id);
   const [name, setname] = useState(content.name);
   const [email, setemail] = useState(content.email);
@@ -12,11 +13,11 @@ function Mymodal({ content, modalclose }) {
   const [address, setaddress] = useState(content.address);
   const [websiteurl, setwebsiteurl] = useState(content.website);
   const [companyname, setcompanyname] = useState(content.company);
-
   const [showmodal, setshowmodal] = useState(true);
 
   const dispatch = useDispatch();
 
+  //This function update the user.
   let updateuser = async (editeddata) => {
     try {
       let updateduser = await axios.put(
@@ -28,6 +29,7 @@ function Mymodal({ content, modalclose }) {
     }
   };
 
+   //below functions are used for formfield changes
   let namechange = (name) => {
     setname(name.target.value);
   };

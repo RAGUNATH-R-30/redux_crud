@@ -6,7 +6,11 @@ import { deleteuser } from "./reducers/crudslice";
 import Mymodal from "./Mymodal";
 import { toast } from "react-toastify";
 import DeleteModal from "./DeleteModal";
+
+
+//Cardcomponent
 function Card({ content }) {
+  //states
   const dispatch = useDispatch();
   const [showmodal, setshowmodal] = useState(false);
   const [deletemodal, setdeletemodal] = useState(false);
@@ -22,6 +26,7 @@ function Card({ content }) {
     }
   };
 
+  //the below functions are used to handle modal state.
   let modalclose = (bool) => {
     setshowmodal(bool);
   };
