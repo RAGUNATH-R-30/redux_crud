@@ -44,7 +44,7 @@ function App() {
       <div className="row">
         <div className="col-lg-12 d-flex justify-content-center">
         <div style={{ height: 200, }}>
-          <img src="src/images/error.png" alt="Error" style={{ maxWidth: "100%", maxHeight: "100%" }} />
+          <img src="https://img.freepik.com/free-vector/hand-drawn-no-data-illustration_23-2150696458.jpg?size=338&ext=jpg&ga=GA1.1.1827530304.1709510400&semt=ais" alt="Error" style={{ maxWidth: "100%", maxHeight: "100%" }} />
         <h3>No Users Found!!</h3>
         </div>
         </div>
