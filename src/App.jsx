@@ -30,9 +30,29 @@ function App() {
     }
   }, []);
 
+  if(data.userlist.length==0){
+    console.log("asdsad")
+  }
+
   return (
     <>
+
+/home/ragunath/Desktop/axios_redux_demo/src/images
+
       <Navbar></Navbar>
+      {data.userlist.length==0?
+      <div className="row">
+        <div className="col-lg-12 d-flex justify-content-center">
+        <div style={{ height: 200, }}>
+          <img src="./src/images/error.png" alt="Error" style={{ maxWidth: "100%", maxHeight: "100%" }} />
+        <h3>No Users Found!!</h3>
+        </div>
+        </div>
+
+      </div>
+      :
+
+
       <div className="container-fluid" style={{ backgroundColor: "#FOFOFO" }}>
         <div className="row">
           <div className="container mt-4 ">
@@ -43,7 +63,7 @@ function App() {
             </div>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   );
 }
